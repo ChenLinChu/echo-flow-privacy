@@ -44,7 +44,7 @@ The following reflects key messages displayed in the extension’s toolbar popup
 
 ### 3.1 Locally on your device
 
-- **User settings** (e.g. interface language, subtitle display preferences) are stored with Chrome’s **`chrome.storage.local`** API on your device.
+- **User settings** (e.g. interface language, subtitle display preferences, whether the on-page shadowing controls are enabled) are stored with Chrome’s **`chrome.storage.local`** API on your device.
 - **Shadowing session state** (e.g. current practice context) may be held in memory during use; it is not uploaded to our servers by EchoFlow.
 - **Microphone audio** is accessed only when you start shadowing/recording, through the browser’s standard APIs (**`getUserMedia`**, **`MediaRecorder`**). Recordings are used **locally** in your browser for playback comparison and feedback. EchoFlow **does not** transmit your raw audio recordings to servers we operate.
 - **Speech recognition** runs **locally in your browser** using **Transformers.js** and an **OpenAI Whisper**-compatible model (default **Base**; you may choose **Small** in settings for higher accuracy). The extension **downloads model weights** from **Hugging Face** (`huggingface.co`). ONNX WASM loaders are served from the extension package. Audio is **not** sent to EchoFlow’s servers for transcription; processing stays on your device (GPU via **WebGPU** when available, otherwise CPU/WASM).
