@@ -34,7 +34,8 @@ The following reflects key messages displayed in the extension’s toolbar popup
 | **Pricing notice** | Free for now; advanced paid features may be added later. |
 | **Privacy summary** | This extension only collects click and interaction analytics events. It does not collect recording-related personal audio or voice data. |
 | **Copyright** | Copyright © Chen Lin Chu. All rights reserved. |
-| **Contact** | Use **Contact us** in the popup to open an email to **chenlinchu637@gmail.com**. |
+| **Third-party content (Wiktionary)** | The popup and shadowing panel link to **English Wiktionary** and the **CC BY-SA 4.0** license deed, and state that phonetic data is community-authored (see each entry’s history). |
+| **Contact** | Use **Contact us** in the popup (above the legal notices) to open an email to **chenlinchu637@gmail.com**. |
 
 **Clarification of the privacy summary:** We do **not** upload your microphone recordings or voice audio to EchoFlow’s own servers. Optional **Google Analytics** (when enabled in the build you install) sends **usage events** and related metadata (see below). When you use **word translation** or **dictionary lookups**, **words** are sent to third-party APIs as described in Section 3. That detail goes beyond the short popup line but is part of honest disclosure.
 
