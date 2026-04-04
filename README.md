@@ -159,5 +159,3 @@ EchoFlow, its name, branding, and original code are owned by Chen Lin Chu unless
 - After deployment, use the public HTTPS URL of this page (e.g. `https://<user>.github.io/<repo>/privacy.html` or your custom domain) as the **Privacy policy URL** in the Chrome Web Store Developer Dashboard.
 
 If your Pages setup serves Markdown as `.md`, confirm the final public URL is stable and readable **without signing in** to GitHub.
-
---- test github actions sync privacy.md to public repo ---
