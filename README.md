@@ -61,6 +61,7 @@ If the distributed build includes a **Google Analytics 4** Measurement ID, the e
 - Interaction-related event names (e.g. starting practice, using controls).
 - **Page URL** (`document.location`) of the page where the event occurred (typically a YouTube watch URL).
 - For some events, parameters such as **video title** (truncated where applicable) when you start practice.
+- After a shadowing comparison, when a word is marked as a mismatch, **the reference word and the recognized spoken word** (each truncated) may be sent as event parameters for product improvement.
 - A **pseudonymous client identifier** stored in `chrome.storage.local` to distinguish installations without logging in.
 
 Analytics is intended for **product improvement**, not for selling personal data. You can learn how Google uses data in Google’s privacy documentation.
