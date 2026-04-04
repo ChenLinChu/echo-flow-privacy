@@ -70,9 +70,9 @@ Analytics is intended for **product improvement**, not for selling personal data
 
 If you use **click-to-translate**, the **selected word or short phrase** and language metadata are sent to the **MyMemory Translation API** (`api.mymemory.translated.net`) to retrieve machine translations. This happens **only when you trigger** that feature. See MyMemory’s terms and privacy policy for their handling of requests.
 
-### 3.5 Dictionary / phonetics (English words)
+### 3.5 Phonetics (English words, Wiktionary)
 
-To show **IPA / KK-style phonetics** for English words appearing in subtitles, the extension may request public dictionary data from the **Free Dictionary API** (`api.dictionaryapi.dev`). Only **word text** needed for lookup is sent.
+To show **IPA / KK-style phonetics** for English words appearing in subtitles, the extension may request public **Wiktionary** pages via the **MediaWiki Action API** on `en.wiktionary.org` (parsed HTML for the word’s entry). Only **word text** needed for lookup is sent in the request URL.
 
 ---
 
@@ -89,7 +89,7 @@ Depending on your region, processing may rely on **consent** (e.g. microphone wh
 | **Google / YouTube** | Site where the extension runs | Pages and content you view there (under YouTube’s policies) |
 | **Google Analytics** | Optional usage statistics | Events, URLs, optional titles, client id |
 | **MyMemory** | Optional word translation | Word/phrase, language pair |
-| **Free Dictionary API** | English phonetic lookup | English word |
+| **Wiktionary (Wikimedia)** | English phonetic lookup (parsed entry HTML) | English word (in API URL) |
 
 We do not control these third parties’ policies; please read their documentation.
 
