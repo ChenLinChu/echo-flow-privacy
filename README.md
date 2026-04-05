@@ -5,7 +5,7 @@ description: Privacy policy for the EchoFlow Chrome extension (language shadowin
 
 # EchoFlow Privacy Policy
 
-**Last updated:** April 4, 2026
+**Last updated:** April 5, 2026
 
 This Privacy Policy describes how **EchoFlow** (“we”, “us”, or “the extension”) handles information
 when you use our Chrome extension. EchoFlow helps you practice language shadowing on **YouTube**
@@ -37,15 +37,17 @@ provides a fuller technical description so nothing important is omitted.
 | **Short description**                | Language shadowing practice on YouTube                                                                                                                                             |
 | **Pricing notice**                   | Free for now; advanced paid features may be added later.                                                                                                                           |
 | **Privacy summary**                  | This extension only collects click and interaction analytics events. It does not collect recording-related personal audio or voice data.                                           |
+| **Pronunciation (TTS)**              | When the video is paused, tapping a word may play its pronunciation using Chrome’s built-in text-to-speech. The voice depends on your system and installed speech engines.         |
 | **Copyright**                        | Copyright © Chen Lin Chu. All rights reserved.                                                                                                                                     |
 | **Third-party content (Wiktionary)** | The popup and shadowing panel link to **English Wiktionary** and the **CC BY-SA 4.0** license deed, and state that phonetic data is community-authored (see each entry’s history). |
 | **Contact**                          | Use **Contact us** in the popup (above the legal notices) to open an email to **chenlinchu637@gmail.com**.                                                                         |
 
 **Clarification of the privacy summary:** We do **not** upload your microphone recordings or voice
 audio to EchoFlow’s own servers. Optional **Google Analytics** (when enabled in the build you
-install) sends **usage events** and related metadata (see below). When you use **word translation**
-or **dictionary lookups**, **words** are sent to third-party APIs as described in Section 3. That
-detail goes beyond the short popup line but is part of honest disclosure.
+install) sends **usage events** and related metadata (see below). When you use **word translation**,
+**pronunciation playback**, or **dictionary lookups**, **words** may be sent to third-party APIs or
+processed by your browser as described in Section 3. That detail goes beyond the short popup line
+but is part of honest disclosure.
 
 ---
 
@@ -101,6 +103,11 @@ sent to the **MyMemory Translation API** (`api.mymemory.translated.net`) to retr
 translations. This happens **only when you trigger** that feature. See MyMemory’s terms and privacy
 policy for their handling of requests.
 
+With the same gesture, the extension may **read the word aloud** using **Chrome’s built-in
+text-to-speech** (`chrome.tts`) from the extension’s background context. The **word text** is sent
+to your **browser / operating system speech engine** (not to EchoFlow’s servers). Available voices
+and whether synthesis runs offline depend on your **Chrome version and OS**.
+
 ### 3.5 Phonetics (English words, Wiktionary)
 
 To show **IPA / KK-style phonetics** for English words appearing in subtitles, the extension may
@@ -125,6 +132,7 @@ consult applicable law for your situation.
 | **Google / YouTube**       | Site where the extension runs               | Pages and content you view there (under YouTube’s policies) |
 | **Google Analytics**       | Optional usage statistics                   | Events, URLs, optional titles, client id                    |
 | **MyMemory**               | Optional word translation                   | Word/phrase, language pair                                  |
+| **Chrome / OS TTS**        | Optional tap-to-pronounce                   | Word text processed by browser/OS speech engine             |
 | **Wiktionary (Wikimedia)** | English phonetic lookup (parsed entry HTML) | English word (in API URL)                                   |
 
 We do not control these third parties’ policies; please read their documentation.
