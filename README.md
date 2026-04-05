@@ -18,9 +18,9 @@ discontinue use.
 
 ## 1. Who we are
 
-EchoFlow is developed by **Chen Lin Chu**.
+EchoFlow is developed by **EchoFlow**.
 
-**Contact:** [chenlinchu637@gmail.com](mailto:chenlinchu637@gmail.com)
+**Contact:** [echoflow.support@gmail.com](mailto:echoflow.support@gmail.com)
 
 For privacy-related questions, data requests, or concerns, email us at the address above.
 
@@ -38,9 +38,9 @@ provides a fuller technical description so nothing important is omitted.
 | **Pricing notice**                   | Free for now; advanced paid features may be added later.                                                                                                                           |
 | **Privacy summary**                  | This extension only collects click and interaction analytics events. It does not collect recording-related personal audio or voice data.                                           |
 | **Pronunciation (TTS)**              | When the video is paused, tapping a word may play its pronunciation using Chrome’s built-in text-to-speech. The voice depends on your system and installed speech engines.         |
-| **Copyright**                        | Copyright © Chen Lin Chu. All rights reserved.                                                                                                                                     |
+| **Copyright**                        | Copyright © EchoFlow. All rights reserved.                                                                                                                                         |
 | **Third-party content (Wiktionary)** | The popup and shadowing panel link to **English Wiktionary** and the **CC BY-SA 4.0** license deed, and state that phonetic data is community-authored (see each entry’s history). |
-| **Contact**                          | Use **Contact us** in the popup (above the legal notices) to open an email to **chenlinchu637@gmail.com**.                                                                         |
+| **Contact**                          | Use **Contact us** in the popup (above the legal notices) to open an email to **echoflow.support@gmail.com**.                                                                      |
 
 **Clarification of the privacy summary:** We do **not** upload your microphone recordings or voice
 audio to EchoFlow’s own servers. Optional **Google Analytics** (when enabled in the build you
@@ -192,7 +192,7 @@ Depending on where you live, you may have rights to **access**, **correct**, **d
 **object** to certain processing, or to **lodge a complaint** with a supervisory authority. Because
 EchoFlow does not maintain traditional user accounts, many requests can be satisfied by **clearing
 extension storage**, **resetting the client id** (if present), or **uninstalling** the extension.
-For other requests, contact us at **chenlinchu637@gmail.com**.
+For other requests, contact us at **echoflow.support@gmail.com**.
 
 ---
 
@@ -206,9 +206,9 @@ policy URL you provide to Google.
 
 ## 14. Copyright
 
-**Copyright © Chen Lin Chu. All rights reserved.**
+**Copyright © EchoFlow. All rights reserved.**
 
-EchoFlow, its name, branding, and original code are owned by Chen Lin Chu unless otherwise stated.
+EchoFlow, its name, branding, and original code are owned by EchoFlow unless otherwise stated.
 Third-party trademarks (e.g. YouTube, Google) belong to their respective owners.
 
 ---
