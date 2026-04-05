@@ -100,8 +100,9 @@ Google uses data in Google’s privacy documentation.
 
 If you use **click-to-translate**, the **selected word or short phrase** and language metadata are
 sent to the **MyMemory Translation API** (`api.mymemory.translated.net`) to retrieve machine
-translations. This happens **only when you trigger** that feature. See MyMemory’s terms and privacy
-policy for their handling of requests.
+translations. The HTTP request is issued **from the extension** while you are on YouTube (declared
+`host_permissions` in the manifest). This happens **only when you trigger** that feature. See
+MyMemory’s terms and privacy policy for their handling of requests.
 
 With the same gesture, the extension may **read the word aloud** using **Chrome’s built-in
 text-to-speech** (`chrome.tts`) from the extension’s background context. The **word text** is sent
@@ -131,6 +132,7 @@ consult applicable law for your situation.
 | -------------------------- | ------------------------------------------- | ----------------------------------------------------------- |
 | **Google / YouTube**       | Site where the extension runs               | Pages and content you view there (under YouTube’s policies) |
 | **Google Analytics**       | Optional usage statistics                   | Events, URLs, optional titles, client id                    |
+| **Hugging Face**           | Downloading Whisper model weights (CDN)     | Model files; **not** your microphone audio (see §3.1)       |
 | **MyMemory**               | Optional word translation                   | Word/phrase, language pair                                  |
 | **Chrome / OS TTS**        | Optional tap-to-pronounce                   | Word text processed by browser/OS speech engine             |
 | **Wiktionary (Wikimedia)** | English phonetic lookup (parsed entry HTML) | English word (in API URL)                                   |
