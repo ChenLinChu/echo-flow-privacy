@@ -99,8 +99,10 @@ If the distributed build includes a **Google Analytics 4** Measurement ID, the e
 events to **Google** (`https://www.google-analytics.com`), for example:
 
 - Interaction-related event names (e.g. starting practice, using controls).
-- **Page URL** (`document.location`) of the page where the event occurred (typically a YouTube watch
-  URL).
+- **Page URL** metadata: hits may include `document.location` as sent by the client; the
+  `start_practice` event uses a **canonical watch URL**
+  (`https://www.youtube.com/watch?v=<video id>`) without tracking query parameters, to reduce
+  incidental data in analytics.
 - For some events, parameters such as **video title** (truncated where applicable) when you start
   practice.
 - After a shadowing comparison, when a word is marked as a mismatch, **the reference word and the
