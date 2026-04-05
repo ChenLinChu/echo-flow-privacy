@@ -75,6 +75,10 @@ but is part of honest disclosure.
   **`onnx-community/whisper-small`**. ONNX WASM loaders are served from the extension package. Audio
   is **not** sent to EchoFlow’s servers for transcription; processing stays on your device (GPU via
   **WebGPU** when available, otherwise CPU/WASM).
+- To reduce wait time on your **first** shadowing attempt, the extension may **start downloading or
+  initializing** the same Whisper model during **idle time** after captions are available and the
+  **“Start practice”** control is shown—**before** you tap it. This uses the same **Hugging Face**
+  model files as above; it does **not** upload your microphone audio.
 
 ### 3.2 YouTube pages (website content you already see)
 
