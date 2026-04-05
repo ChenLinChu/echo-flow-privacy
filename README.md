@@ -78,6 +78,21 @@ but is part of honest disclosure.
   is **video content** available on the page or through YouTube’s normal caption mechanisms while
   you watch.
 
+#### Timedtext bridge, `postMessage`, and same-page scripts
+
+To read captions that the player loads with your session cookies, EchoFlow injects a small script
+(**`timedtext-bridge.js`**) into the page’s **main JavaScript world** (not the extension’s isolated
+world). That script intercepts YouTube’s own timedtext responses, keeps a **bounded in-memory
+cache**, and exchanges messages with the extension via **`window.postMessage`**, targeted at this
+tab’s **origin** (e.g. `https://www.youtube.com`).
+
+**Same-origin scripts on the watch page** (including other browser extensions that inject into the
+page, or scripts on the site) could **listen for** those messages or **send** the same message
+types. In particular, another script running in this tab could request the **latest cached timedtext
+payload** the bridge holds (similar to what the extension does to show subtitles). This does **not**
+send your captions to EchoFlow’s servers; it is a **same-tab, same-origin** interaction. If you use
+other extensions or user scripts on YouTube, their behavior is outside EchoFlow’s control.
+
 ### 3.3 Analytics (optional)
 
 If the distributed build includes a **Google Analytics 4** Measurement ID, the extension may send
@@ -162,6 +177,11 @@ lending**. We use data only to provide and improve EchoFlow and as described her
 
 We design the extension to minimize data collection. No security practice is perfect; use EchoFlow
 at your own risk on networks and devices you trust.
+
+The timedtext bridge only performs **credentialed fetches** to **YouTube-family caption URLs** that
+include `timedtext` in the path or query; it is not intended as a general-purpose proxy. For more
+context on `postMessage` and same-page scripts, see **Timedtext bridge, `postMessage`, and same-page
+scripts** under Section 3.2 above.
 
 ---
 
