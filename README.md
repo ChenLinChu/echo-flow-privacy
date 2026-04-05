@@ -66,10 +66,11 @@ but is part of honest disclosure.
   recordings to servers we operate.
 - **Speech recognition** runs **locally in your browser** using **Transformers.js** and an **OpenAI
   Whisper**-compatible model (default **Base**; you may choose **Small** in settings for higher
-  accuracy). The extension **downloads model weights** from **Hugging Face** (`huggingface.co`).
-  ONNX WASM loaders are served from the extension package. Audio is **not** sent to EchoFlow’s
-  servers for transcription; processing stays on your device (GPU via **WebGPU** when available,
-  otherwise CPU/WASM).
+  accuracy). The extension **downloads model weights** from **Hugging Face** (`huggingface.co`),
+  from the public repositories **`onnx-community/whisper-base`** (default) and optionally
+  **`onnx-community/whisper-small`**. ONNX WASM loaders are served from the extension package. Audio
+  is **not** sent to EchoFlow’s servers for transcription; processing stays on your device (GPU via
+  **WebGPU** when available, otherwise CPU/WASM).
 
 ### 3.2 YouTube pages (website content you already see)
 
@@ -99,16 +100,22 @@ If the distributed build includes a **Google Analytics 4** Measurement ID, the e
 events to **Google** (`https://www.google-analytics.com`), for example:
 
 - Interaction-related event names (e.g. starting practice, using controls).
-- **Page URL** metadata: hits may include `document.location` as sent by the client; the
-  `start_practice` event uses a **canonical watch URL**
-  (`https://www.youtube.com/watch?v=<video id>`) without tracking query parameters, to reduce
-  incidental data in analytics.
+- **Page URL** metadata: each hit may include the Measurement Protocol **`dl` (document location)**
+  parameter set to the tab’s full **`location.href`** (e.g. a YouTube watch URL **with** list or
+  timestamp query parameters when present). Separately, the `start_practice` event also sends a
+  **canonical watch URL** (`https://www.youtube.com/watch?v=<video id>`) **without** those tracking
+  or incidental query parameters in a dedicated event parameter.
 - For some events, parameters such as **video title** (truncated where applicable) when you start
   practice.
+- When you change settings, a **`settings_change`** event may include the **setting key** and a
+  **string form of the new value** (length-capped in the client).
+- When you use **click-to-translate** or **tap-to-pronounce**, optional analytics events such as
+  **`word_translate_request`** and **`word_pronunciation_play`** may record **UI source** metadata
+  (e.g. cue vs. feedback region). They are **not** intended to carry full subtitle sentences.
 - After a shadowing comparison, when a word is marked as a mismatch, **the reference word and the
   recognized spoken word** (each truncated) may be sent as event parameters for product improvement.
-- A **pseudonymous client identifier** stored in `chrome.storage.local` to distinguish installations
-  without logging in.
+- A **pseudonymous client identifier** and **session counters** (`sid` / `sct`-style fields) stored
+  or derived in `chrome.storage.local` to approximate GA4 sessions without logging in.
 
 Analytics is intended for **product improvement**, not for selling personal data. You can learn how
 Google uses data in Google’s privacy documentation.
@@ -130,7 +137,10 @@ and whether synthesis runs offline depend on your **Chrome version and OS**.
 
 To show **IPA / KK-style phonetics** for English words appearing in subtitles, the extension may
 request public **Wiktionary** pages via the **MediaWiki Action API** on `en.wiktionary.org` (parsed
-HTML for the word’s entry). Only **word text** needed for lookup is sent in the request URL.
+HTML for the word’s entry). Only **word text** needed for lookup is sent in the request URL. To
+prefetch neighboring lines, the **extension background** may receive a **bounded-length lookup
+string** derived from subtitle text over an internal message; outbound **Wiktionary** requests still
+use **per-word** page titles in the URL, not the full sentence as a single title.
 
 ---
 
@@ -145,14 +155,14 @@ consult applicable law for your situation.
 
 ## 5. Third-party services
 
-| Service                    | Purpose                                     | Typical data involved                                       |
-| -------------------------- | ------------------------------------------- | ----------------------------------------------------------- |
-| **Google / YouTube**       | Site where the extension runs               | Pages and content you view there (under YouTube’s policies) |
-| **Google Analytics**       | Optional usage statistics                   | Events, URLs, optional titles, client id                    |
-| **Hugging Face**           | Downloading Whisper model weights (CDN)     | Model files; **not** your microphone audio (see §3.1)       |
-| **MyMemory**               | Optional word translation                   | Word/phrase, language pair                                  |
-| **Chrome / OS TTS**        | Optional tap-to-pronounce                   | Word text processed by browser/OS speech engine             |
-| **Wiktionary (Wikimedia)** | English phonetic lookup (parsed entry HTML) | English word (in API URL)                                   |
+| Service                    | Purpose                                                       | Typical data involved                                       |
+| -------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------- |
+| **Google / YouTube**       | Site where the extension runs                                 | Pages and content you view there (under YouTube’s policies) |
+| **Google Analytics**       | Optional usage statistics                                     | Events, URLs, optional titles, client id                    |
+| **Hugging Face**           | Downloading Whisper ONNX weights (`onnx-community/whisper-*`) | Model files; **not** your microphone audio (see §3.1)       |
+| **MyMemory**               | Optional word translation                                     | Word/phrase, language pair                                  |
+| **Chrome / OS TTS**        | Optional tap-to-pronounce                                     | Word text processed by browser/OS speech engine             |
+| **Wiktionary (Wikimedia)** | English phonetic lookup (parsed entry HTML)                   | English word (in API URL)                                   |
 
 We do not control these third parties’ policies; please read their documentation.
 
