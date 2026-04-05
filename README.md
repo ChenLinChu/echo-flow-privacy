@@ -58,6 +58,10 @@ but is part of honest disclosure.
 - **User settings** (e.g. interface language, subtitle display preferences, whether the on-page
   shadowing controls are enabled) are stored with Chrome’s **`chrome.storage.local`** API on your
   device.
+- **Ephemeral phonetics cache** (dictionary IPA lookups fetched from Wiktionary during a browser
+  session) may be stored in **`chrome.storage.session`** so lookups can survive brief extension
+  service worker restarts; it is cleared when the browser session ends and is not sent to EchoFlow
+  servers.
 - **Shadowing session state** (e.g. current practice context) may be held in memory during use; it
   is not uploaded to our servers by EchoFlow.
 - **Microphone audio** is accessed only when you start shadowing/recording, through the browser’s
