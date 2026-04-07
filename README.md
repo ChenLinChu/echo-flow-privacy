@@ -31,23 +31,22 @@ For privacy-related questions, data requests, or concerns, email us at the addre
 The following reflects key messages displayed in the extension’s toolbar popup. **Section 3** below
 provides a fuller technical description so nothing important is omitted.
 
-| Topic                                | Text shown in the popup (English)                                                                                                                                                  |
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Product name**                     | **EchoFlow**                                                                                                                                                                       |
-| **Short description**                | Language shadowing practice on YouTube                                                                                                                                             |
-| **Pricing notice**                   | Free for now; advanced paid features may be added later.                                                                                                                           |
-| **Privacy summary**                  | This extension only collects click and interaction analytics events. It does not collect recording-related personal audio or voice data.                                           |
-| **Pronunciation (TTS)**              | When the video is paused, tapping a word may play its pronunciation using Chrome’s built-in text-to-speech. The voice depends on your system and installed speech engines.         |
-| **Copyright**                        | Copyright © EchoFlow. All rights reserved.                                                                                                                                         |
-| **Third-party content (Wiktionary)** | The popup and shadowing panel link to **English Wiktionary** and the **CC BY-SA 4.0** license deed, and state that phonetic data is community-authored (see each entry’s history). |
-| **Contact**                          | Use **Contact us** in the popup (above the legal notices) to open an email to **echoflow.support@gmail.com**.                                                                      |
+| Topic                   | Text shown in the popup (English)                                                                                                                                          |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Product name**        | **EchoFlow**                                                                                                                                                               |
+| **Short description**   | Language shadowing practice on YouTube                                                                                                                                     |
+| **Pricing notice**      | Free for now; advanced paid features may be added later.                                                                                                                   |
+| **Privacy summary**     | This extension only collects click and interaction analytics events. It does not collect recording-related personal audio or voice data.                                   |
+| **Pronunciation (TTS)** | When the video is paused, tapping a word may play its pronunciation using Chrome’s built-in text-to-speech. The voice depends on your system and installed speech engines. |
+| **Copyright**           | Copyright © EchoFlow. All rights reserved.                                                                                                                                 |
+| **Contact**             | Use **Contact us** in the popup (above the legal notices) to open an email to **echoflow.support@gmail.com**.                                                              |
 
 **Clarification of the privacy summary:** We do **not** upload your microphone recordings or voice
 audio to EchoFlow’s own servers. Optional **Google Analytics** (when enabled in the build you
-install) sends **usage events** and related metadata (see below). When you use **word translation**,
-**pronunciation playback**, or **dictionary lookups**, **words** may be sent to third-party APIs or
-processed by your browser as described in Section 3. That detail goes beyond the short popup line
-but is part of honest disclosure.
+install) sends **usage events** and related metadata (see below). When you use **word translation**
+or **pronunciation playback**, **words** may be sent to third-party APIs or processed by your
+browser as described in Section 3. That detail goes beyond the short popup line but is part of
+honest disclosure.
 
 ---
 
@@ -58,10 +57,6 @@ but is part of honest disclosure.
 - **User settings** (e.g. interface language, subtitle display preferences, whether the on-page
   shadowing controls are enabled) are stored with Chrome’s **`chrome.storage.local`** API on your
   device.
-- **Ephemeral phonetics cache** (dictionary IPA lookups fetched from Wiktionary during a browser
-  session) may be stored in **`chrome.storage.session`** so lookups can survive brief extension
-  service worker restarts; it is cleared when the browser session ends and is not sent to EchoFlow
-  servers.
 - **Shadowing session state** (e.g. current practice context) may be held in memory during use; it
   is not uploaded to our servers by EchoFlow.
 - **Microphone audio** is accessed only when you start shadowing/recording, through the browser’s
@@ -141,15 +136,6 @@ text-to-speech** (`chrome.tts`) from the extension’s background context. The *
 to your **browser / operating system speech engine** (not to EchoFlow’s servers). Available voices
 and whether synthesis runs offline depend on your **Chrome version and OS**.
 
-### 3.5 Phonetics (English words, Wiktionary)
-
-To show **IPA / KK-style phonetics** for English words appearing in subtitles, the extension may
-request public **Wiktionary** pages via the **MediaWiki Action API** on `en.wiktionary.org` (parsed
-HTML for the word’s entry). Only **word text** needed for lookup is sent in the request URL. To
-prefetch neighboring lines, the **extension background** may receive a **bounded-length lookup
-string** derived from subtitle text over an internal message; outbound **Wiktionary** requests still
-use **per-word** page titles in the URL, not the full sentence as a single title.
-
 ---
 
 ## 4. Legal bases and purposes (EEA / UK users — general information)
@@ -163,14 +149,13 @@ consult applicable law for your situation.
 
 ## 5. Third-party services
 
-| Service                    | Purpose                                                          | Typical data involved                                       |
-| -------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
-| **Google / YouTube**       | Site where the extension runs                                    | Pages and content you view there (under YouTube’s policies) |
-| **Google Analytics**       | Optional usage statistics                                        | Events, URLs, optional titles, client id                    |
-| **Hugging Face**           | Downloading Whisper ONNX weights (`onnx-community/whisper-*.en`) | Model files; **not** your microphone audio (see §3.1)       |
-| **MyMemory**               | Optional word translation                                        | Word/phrase, language pair                                  |
-| **Chrome / OS TTS**        | Optional tap-to-pronounce                                        | Word text processed by browser/OS speech engine             |
-| **Wiktionary (Wikimedia)** | English phonetic lookup (parsed entry HTML)                      | English word (in API URL)                                   |
+| Service              | Purpose                                                          | Typical data involved                                       |
+| -------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
+| **Google / YouTube** | Site where the extension runs                                    | Pages and content you view there (under YouTube’s policies) |
+| **Google Analytics** | Optional usage statistics                                        | Events, URLs, optional titles, client id                    |
+| **Hugging Face**     | Downloading Whisper ONNX weights (`onnx-community/whisper-*.en`) | Model files; **not** your microphone audio (see §3.1)       |
+| **MyMemory**         | Optional word translation                                        | Word/phrase, language pair                                  |
+| **Chrome / OS TTS**  | Optional tap-to-pronounce                                        | Word text processed by browser/OS speech engine             |
 
 We do not control these third parties’ policies; please read their documentation.
 
