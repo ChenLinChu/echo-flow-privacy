@@ -71,10 +71,10 @@ but is part of honest disclosure.
 - **Speech recognition** runs **locally in your browser** using **Transformers.js** and an **OpenAI
   Whisper**-compatible model (default **Base**; you may choose **Small** in settings for higher
   accuracy). The extension **downloads model weights** from **Hugging Face** (`huggingface.co`),
-  from the public repositories **`onnx-community/whisper-base`** (default) and optionally
-  **`onnx-community/whisper-small`**. ONNX WASM loaders are served from the extension package. Audio
-  is **not** sent to EchoFlow’s servers for transcription; processing stays on your device (GPU via
-  **WebGPU** when available, otherwise CPU/WASM).
+  from the public repositories **`onnx-community/whisper-base.en`** (default) and optionally
+  **`onnx-community/whisper-small.en`**. ONNX WASM loaders are served from the extension package.
+  Audio is **not** sent to EchoFlow’s servers for transcription; processing stays on your device
+  (GPU via **WebGPU** when available, otherwise CPU/WASM).
 - The Whisper model is loaded when you **start shadowing** (after you choose to practice), not
   automatically in the background before that. Optional **live** transcription during recording is
   **off by default** in the current build; a full pass still runs **on your device** when a take
@@ -163,14 +163,14 @@ consult applicable law for your situation.
 
 ## 5. Third-party services
 
-| Service                    | Purpose                                                       | Typical data involved                                       |
-| -------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------- |
-| **Google / YouTube**       | Site where the extension runs                                 | Pages and content you view there (under YouTube’s policies) |
-| **Google Analytics**       | Optional usage statistics                                     | Events, URLs, optional titles, client id                    |
-| **Hugging Face**           | Downloading Whisper ONNX weights (`onnx-community/whisper-*`) | Model files; **not** your microphone audio (see §3.1)       |
-| **MyMemory**               | Optional word translation                                     | Word/phrase, language pair                                  |
-| **Chrome / OS TTS**        | Optional tap-to-pronounce                                     | Word text processed by browser/OS speech engine             |
-| **Wiktionary (Wikimedia)** | English phonetic lookup (parsed entry HTML)                   | English word (in API URL)                                   |
+| Service                    | Purpose                                                          | Typical data involved                                       |
+| -------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
+| **Google / YouTube**       | Site where the extension runs                                    | Pages and content you view there (under YouTube’s policies) |
+| **Google Analytics**       | Optional usage statistics                                        | Events, URLs, optional titles, client id                    |
+| **Hugging Face**           | Downloading Whisper ONNX weights (`onnx-community/whisper-*.en`) | Model files; **not** your microphone audio (see §3.1)       |
+| **MyMemory**               | Optional word translation                                        | Word/phrase, language pair                                  |
+| **Chrome / OS TTS**        | Optional tap-to-pronounce                                        | Word text processed by browser/OS speech engine             |
+| **Wiktionary (Wikimedia)** | English phonetic lookup (parsed entry HTML)                      | English word (in API URL)                                   |
 
 We do not control these third parties’ policies; please read their documentation.
 
